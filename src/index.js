@@ -11,10 +11,10 @@ fetchBreeds().then(response => {
     ).join("")
     breedSelect.insertAdjacentHTML("beforeend", markup);
 });
-hideError();
 loaderClass.style.display = "none";
 catChoose("Please, choose a cat")
 breedSelect.addEventListener('change', evt => {
+    hideError();
     const selectedBreed = evt.target.value;
     if (selectedBreed) {
         chooseCat.style.display = "none";
@@ -26,8 +26,7 @@ breedSelect.addEventListener('change', evt => {
       })
       .catch(() => {
         showError("Oops! Something went wrong! Try reloading the page or choose another cat!");
-      })
-        .finally(() => {
+      }).finally(() => {
           loaderClass.style.display = "none";
       })
     }
